@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('SCM') {
             steps {
-                git branch: 'fix', url: 'https://github.com/Kira-0007/jenkins-docker-maven-java-webapp.git'
+                git 'https://github.com/Kira-0007/jenkins-docker-maven-java-webapp.git'
             }
             
             
@@ -48,8 +48,8 @@ pipeline {
                 sshagent(['QA_ENV_SSH_CRED']) {
     // some block
     
-                sh "ssh -o StrictHostKeyChecking=no ec2-user@52.66.20.45 sudo docker rm -f myjavaapp"
-                sh "ssh ec2-user@52.66.20.45 sudo docker run -d -p 8080:8080 --name myjavaapp bunny001/javaweb:${BUILD_TAG}"
+                sh "ssh -o StrictHostKeyChecking=no ec2-user@13.233.251.102 sudo docker rm -f myjavaapp"
+                sh "ssh ec2-user@13.233.251.102 sudo docker run -d -p 8080:8080 --name myjavaapp bunny001/javaweb:${BUILD_TAG}"
 }
             }
         }
@@ -86,8 +86,8 @@ pipeline {
                 sshagent(['QA_ENV_SSH_CRED']) {
     // some block
     
-                sh "ssh -o StrictHostKeyChecking=no ec2-user@13.233.156.216 sudo docker rm -f myjavaapp"
-                sh "ssh ec2-user@13.233.156.216 sudo docker run -it -d -p 8080:8080 --name myjavaapp bunny001/javaweb:${BUILD_TAG}"
+                sh "ssh -o StrictHostKeyChecking=no ec2-user@15.206.212.248 sudo docker rm -f myjavaapp"
+                sh "ssh ec2-user@15.206.212.248 sudo docker run -it -d -p 8080:8080 --name myjavaapp bunny001/javaweb:${BUILD_TAG}"
 }
             }
         }
